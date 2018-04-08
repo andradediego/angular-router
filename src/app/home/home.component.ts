@@ -1,3 +1,4 @@
+import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -8,7 +9,8 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+     private authService: AuthService) { }
 
   ngOnInit() {
   }
@@ -22,4 +24,13 @@ export class HomeComponent implements OnInit {
   });
   }
 
+  onLogin() {
+    this.authService.login();
+    console.log('You are logged');
+  }
+
+  onLogout() {
+    this.authService.logout();
+    console.log('You are no longer logged');
+  }
 }
